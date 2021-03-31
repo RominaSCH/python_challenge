@@ -6,7 +6,7 @@ Start by creating the functions
 """
 
 def is_on_list(li, day):
-  if(f"{day}" in li):
+  if(day in li):
     return True
   else:
     return False
