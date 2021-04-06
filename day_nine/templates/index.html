@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hacker News | {%if order_by == "new" %} New {%elif order_by == "popular" %} Popular {% endif %}
+	</title>
+	<!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
+	<style>
+		:root {
+			--basic-color: #0a174e;
+			--couple-color: #f5d042;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+      box-sizing: border-box;
+			font-family: Segoe "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+		a {
+			text-decoration: none;
+			color: #0063B2;
+		}
+		a:visited {
+			color: #899bc4;
+		}
+		header {
+			background: var(--basic-color);
+			color: var(--couple-color);
+			width: 100%;
+			height: 150px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		.header-title {
+			margin-bottom: 10px;
+			font-size: 50px;
+			font-weight: 600;
+		}
+		main {
+			background: var(--couple-color);
+			color: var(--basic-color);
+			padding: 10px 20px;
+			width: 100%;
+			align-items: center;
+		}
+		.each-wrapper {
+			padding: 10px 5px;
+			border-bottom: 1px solid #fff;
+		}
+		.each-title {
+			font-size: 20px;
+		}
+		.each-info {
+			margin-top: 7px;
+		}
+    i{
+      font-size:16px;
+    }
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1 class="header-title">Hacker News</h1>
+		<span class="header-info">Ordered by :&nbsp;
+      {% if order_by == "new" %}
+       <a href="/?order_by=popular">Popular</a>
+      {% elif order_by == "popular" %}
+       <strong>Popular</strong>
+      {% endif %}
+      |
+      {% if order_by == "popular" %}
+        <a href="/?order_by=new">New</a>
+      {% elif order_by == "new" %}
+        <strong>New</strong>
+      {% endif %}
+    </span>
+  </header>
+  <main>
+    {% for result in results %}
+    <div class="each-wrapper">
+     <div class="each-title">
+       <a href="/{{result.objectID}}">
+        <span>{{result.title}} - </span></a>
+        <a href="{{result.url}}" ><i class="fas fa-link"></i>
+          </a>
+     </div>
+     <div class="each-info">
+       {{result.points}} points | By : {{result.author}} | {{result.num_comments}} comments
+     </div>
+    </div>
+    {% endfor %}
+  </main>
+
+  <script src="https://kit.fontawesome.com/6c2f90a09b.js" crossorigin="anonymous"></script>
+</body>
+</html>

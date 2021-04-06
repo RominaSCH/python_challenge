@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hacker News | {{result.title}}</title>
+  <!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
+  <style>
+    :root{
+      --basic-color:#0A174E;
+      --couple-color: #F5D042;
+    }
+    *{
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+      font-family: Segoe 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body{
+      background:var(--couple-color);
+    }
+    a,
+    a:visited{
+      text-decoration: none;
+      color: #6A7BA2;
+    }
+    header{
+      background: var(--basic-color);
+      color: var(--couple-color);
+      width: 100%;
+      height:150px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:column;
+    }
+    .header-title{
+      font-size:50px;
+      font-weight:600;
+    }
+    .header-info{
+      margin-top: 10px;
+      margin-bottom:6px;
+    }
+    .header-info a{
+      color:var(--couple-color);  
+    }
+    main{
+      background:var(--couple-color);
+      color:var(--basic-color);
+      padding: 10px 20px;
+      width:100%;
+      align-items: center;
+    }
+    .each-wrapper {
+			padding: 10px 5px;
+			border-bottom: 1px solid #fff;
+		}
+    .comment-author{
+      font-size: 18px;
+      font-weight:600;
+    }
+    .comment{
+      font-size:15px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="header-title">{{result.title}}</h1>
+    <span class="header-info">
+    {{result.points}} points | By : {{result.author}} | <a href="/..">Back</a>
+    </span>
+    <span><a href="{{result.url}}" >{{result.url}}</a></span>
+  </header>
+  <main>
+    {% for comment in result.children %}
+      <div class="each-wrapper">
+        {% if comment.author == None %}
+          [deleted]
+        {% else %}
+          <span class="comment-author">{{comment.author}}</span>
+          <span class="comment">{{comment.text | safe}}</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </main>
+</body>
+</html>
