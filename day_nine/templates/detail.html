@@ -5,8 +5,8 @@
   <!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
   <style>
     :root{
-      --basic-color:#0A174E;
-      --couple-color: #F5D042;
+      --basic-color:#02343F;
+      --couple-color: #F0EDCC;
     }
     *{
       padding:0;
@@ -15,7 +15,7 @@
       font-family: Segoe 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body{
-      background:var(--couple-color);
+      background:var(--basic-color);
     }
     a,
     a:visited{
@@ -26,13 +26,15 @@
       background: var(--basic-color);
       color: var(--couple-color);
       width: 100%;
-      height:150px;
+      height:200px;
       display:flex;
       justify-content: center;
       align-items: center;
       flex-direction:column;
     }
     .header-title{
+      display:flex;
+      justify-content: center;
       font-size:50px;
       font-weight:600;
     }
@@ -44,15 +46,15 @@
       color:var(--couple-color);  
     }
     main{
-      background:var(--couple-color);
-      color:var(--basic-color);
       padding: 10px 20px;
       width:100%;
       align-items: center;
     }
     .each-wrapper {
-			padding: 10px 5px;
-			border-bottom: 1px solid #fff;
+			padding: 10px 15px;
+			border-radius: 20px;
+      background:var(--couple-color);
+      margin-bottom:13px;
 		}
     .comment-author{
       font-size: 18px;
