@@ -8,9 +8,6 @@
   <!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
-		:root {
-			--basic-color: #242424;
-		}
 		* {
 			padding: 0;
 			margin: 0;
@@ -18,20 +15,20 @@
       text-decoration:none;
 		}
     a{
-      color:#fff;
+      color:#e0e0e0;
     }
     a:visited{
-      color:#c2c2c2;
+      color:#999999;
     }
 		body {
-			background: var(--basic-color);
+			background: #242424;
 			color: #fff;
 			display: flex;
 			flex-direction: column;
 		}
     header {
 			width: 100%;
-			text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+			text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
 			margin: 20px;
       text-align:center;
 		}
@@ -40,17 +37,22 @@
     }
     .wrapper{
       padding:10px;
-      border: 1px solid #bfbfbf;
+      border: 1px solid #e0e0e0;
       margin-bottom:8px;
       border-radius:5px;
+    }
+    h3{
+      display:block;
+      margin:5px 0px;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1><a href="/">Reddit Reader</a></h1>
+    <h1>Reddit Reader</h1>
     <h3>Reading : {% for subreddit in selected%}{{subreddit}}  {% endfor %} </h3>
+    <span><a href="/">Back</a></span>
   </header>
   <main>
     {% for post in posts %}
