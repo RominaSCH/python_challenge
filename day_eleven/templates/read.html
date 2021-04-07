@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+    Reddit Reader
+  </title>
+  <!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
+		:root {
+			--basic-color: #242424;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: 'Montserrat', sans-serif;
+      text-decoration:none;
+		}
+    a{
+      color:#fff;
+    }
+    a:visited{
+      color:#c2c2c2;
+    }
+		body {
+			background: var(--basic-color);
+			color: #fff;
+			display: flex;
+			flex-direction: column;
+		}
+    header {
+			width: 100%;
+			text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+			margin: 20px;
+      text-align:center;
+		}
+    main{
+      padding:0px 10px;
+    }
+    .wrapper{
+      padding:10px;
+      border: 1px solid #bfbfbf;
+      margin-bottom:8px;
+      border-radius:5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">Reddit Reader</a></h1>
+    <h3>Reading : {% for subreddit in selected%}{{subreddit}}  {% endfor %} </h3>
+  </header>
+  <main>
+    {% for post in posts %}
+      <div class="wrapper">
+          <h3><a href="https://reddit.com{{post.link}}" target="_blank">{{post.title}}</a></h3>
+          <h4>{{post.votes}} upvotes | {{post.subreddit}}</h4>
+      </div>
+    {% endfor %}
+  </main>
+</body>
+
+</html>

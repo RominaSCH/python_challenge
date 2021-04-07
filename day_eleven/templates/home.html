@@ -1,139 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
-        body{
-            margin:0;
-            padding: 0;
-            background: #222;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* min-height: 100vh; */
-            font-family: 'Montserrat', sans-serif;
-        }
-        .container{
-            /* max-width: 1200px; */
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        .container div{
-            margin: 6px;
-        }
-        .container div label{
-            cursor: pointer;
-        }
-        .container div label input[type="checkbox"]{
-            display: none;
-        }
-        .container div label span{
-            position: relative;
-            display: inline-block;
-            background: #424242;
-            padding: 9px 15px;
-            color: #555;
-            text-shadow: 0 1px 4px rgba(0,0,0,.5);
-            border-radius: 18px;
-            font-size: 20px;
-            transition: 0.5s;
-            user-select: none;
-            overflow: hidden;
-        }
-        .container div label span:before{
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: rgba(255,255,255,.1);
-        }
-        .container div:nth-child(3n+1) label input[type="checkbox"]:checked ~ span{
-            color: #fff;
-            background: #e91e63;
-            box-shadow: 0 2px 20px #e91e63;
-        }
-        .container div:nth-child(3n+2) label input[type="checkbox"]:checked ~ span{
-            color: #fff;
-            background:#ffeb3b;
-            box-shadow: 0 2px 20px #ffeb3b;
-        }
-        .container div:nth-child(3n) label input[type="checkbox"]:checked ~ span{
-            color: #fff;
-            background: #2e2efe;
-            box-shadow: 0 2px 20px #2e2efe;
-        }
-        /* .container div label input[type="checkbox"]:checked ~ span{
-            background: #fff;
-        } */
-        
-        
-    </style>
+	<title>
+		Reddit Reader
+	</title>
+	<!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
+		:root {
+			--basic-color: #242424;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		body {
+			background: var(--basic-color);
+			color: #fff;
+			display: flex;
+
+			flex-direction: column;
+			min-height: 100vh;
+			text-align: center;
+		}
+
+		header {
+			width: 100%;
+			height: auto;
+			text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+			margin: 30px;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			display: flex;
+			/* flex-direction: column; */
+			flex-wrap: wrap;
+		}
+
+		.container div {
+			margin: 6px;
+		}
+
+		.container div label {
+			cursor: pointer;
+		}
+
+		.container div label input[type="checkbox"] {
+			display: none;
+		}
+
+		.container div label span {
+			position: relative;
+			display: inline-block;
+			background: #424242;
+			padding: 9px 15px;
+			color: #555;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+			border-radius: 18px;
+			font-size: 20px;
+			transition: 0.5s;
+			user-select: none;
+			overflow: hidden;
+		}
+
+		.container div label span:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 50%;
+			background: rgba(255, 255, 255, .1);
+		}
+
+		.container div:nth-child(3n+1) label input[type="checkbox"]:checked~span {
+			color: #fff;
+			background: #e91e63;
+			box-shadow: 0 2px 20px #e91e63;
+		}
+
+		.container div:nth-child(3n+2) label input[type="checkbox"]:checked~span {
+			color: #fff;
+			background: #ffeb3b;
+			box-shadow: 0 2px 20px #ffeb3b;
+		}
+
+		.container div:nth-child(3n) label input[type="checkbox"]:checked~span {
+			color: #fff;
+			background: #2e2efe;
+			box-shadow: 0 2px 20px #2e2efe;
+		}
+
+		button {
+			margin-top: 20px;
+			background: #999797;
+			padding: 9px 15px;
+			color: #555;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+			border-radius: 18px;
+			font-size: 20px;
+			border: none;
+			transition: .5s;
+		}
+
+		button:active, button:hover {
+			background: #fff;
+			color: #555;
+			box-shadow: 0 2px 20px #fff;
+		}
+
+		h4 {
+			margin-top: 5px;
+		}
+	</style>
 </head>
+
 <body>
-    <div class="container">
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">javascript</span>
-            </label>
+	<header>
+		<h1>Reddit Reader</h1>
+		<h3>A service to aggregate all your favourite subreddits</h3>
+		<h4>Select the subreddits you're interested on</h4>
+	</header>
+	<main>
+		<form action="/read">
+			<div class="container">
+				{% for subreddit in subreddits %}
+				<div>
+					<label>
+            <input type="checkbox" name="{{subreddit}}" id="{{subreddit}}" />
+            <span for="{{subreddit}}">{{subreddit}}
+            </span>
+          </label>
         </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">reactjs</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">reactnative</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">programming</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">css</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">golang</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">flutter</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">rust</span>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" name="">
-                <span class="list">django</span>
-            </label>
-        </div>
-    </div>
+        {% endfor %}
+      </div>
+      <button type="submit">Aggregate</button>
+    </form>
+  </main>
 </body>
+
 </html>
