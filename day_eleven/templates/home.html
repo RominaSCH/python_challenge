@@ -2,11 +2,9 @@
 <html>
 
 <head>
-	<title>
-		Reddit Reader
-	</title>
-	<!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
-	<style>
+  <title>Reddit Reader</title>
+  <!-- <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link> -->
+  <style>
 		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
 		* {
 			padding: 0;
@@ -29,17 +27,24 @@
 			text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 			margin: 30px;
 		}
+    h4{
+      text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+    }
 
 		.container {
 			max-width: 600px;
 			margin: 0 auto;
 			display: flex;
-			/* flex-direction: column; */
 			flex-wrap: wrap;
 		}
 
 		.container div {
 			margin: 6px;
+      transition: all .2s ease-in-out;
+		}
+
+    .container div:hover {
+			transform: scale(1.1);
 		}
 
 		.container div label {
@@ -120,12 +125,12 @@
 </head>
 
 <body>
-	<header>
-		<h1>Reddit Reader</h1>
-		<h3>A service to aggregate all your favourite subreddits</h3>
-		<h4>Select the subreddits you're interested on</h4>
-	</header>
-	<main>
+  <header>
+  <h1>Reddit Reader</h1>
+	<h3>A service to aggregate all your favourite subreddits</h3>
+  </header>
+  <main>
+    <h4>Select the subreddits you're interested on</h4>
 		<form action="/read">
 			<div class="container">
 				{% for subreddit in subreddits %}

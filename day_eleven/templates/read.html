@@ -16,9 +16,11 @@
 		}
     a{
       color:#e0e0e0;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
     }
     a:visited{
-      color:#999999;
+      color:#8f8f8f;
+      text-shadow: 1px 1px 3px rgba(150, 150, 150, 0.5);
     }
 		body {
 			background: #242424;
@@ -45,20 +47,23 @@
       display:block;
       margin:5px 0px;
     }
+    h4{
+      text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+    }
   </style>
 </head>
 
 <body>
   <header>
     <h1>Reddit Reader</h1>
-    <h3>Reading : {% for subreddit in selected%}{{subreddit}}  {% endfor %} </h3>
+    <h3>Reading : {% for subreddit in options%}{{subreddit}}&nbsp;{% endfor %} </h3>
     <span><a href="/">Back</a></span>
   </header>
   <main>
-    {% for post in posts %}
+    {% for each in rd %}
       <div class="wrapper">
-          <h3><a href="https://reddit.com{{post.link}}" target="_blank">{{post.title}}</a></h3>
-          <h4>{{post.votes}} upvotes | {{post.subreddit}}</h4>
+          <h3><a href="https://reddit.com{{each.link}}" target="_blank">{{each.title}}</a></h3>
+          <h4>{{each.votes}} upvotes | {{each.subreddit}}</h4>
       </div>
     {% endfor %}
   </main>
