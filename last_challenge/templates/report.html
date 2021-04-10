@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Job search</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+		:root {
+			--basic-color: #242424;
+			--couple-color: #fff;
+		}
+
+		* {
+			margin: 0;
+			padding: 0%;
+			background: var(--basic-color);
+      font-family: 'Special Elite', cursive;
+      color:var(--couple-color);
+      box-sizing: border-box;
+      text-shadow: 1px 1px 2px rgba(200, 200, 200, .6);
+		}
+
+		header {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 270px;
+		}
+
+		.title {
+			font-size: 70px;
+			color: var(--couple-color);
+			margin-bottom: 30px;
+      text-shadow: 1px 2px 2px rgba(200, 200, 200, .8);
+		}
+
+		.results-header {
+			font-size: 30px;
+			color: var(--couple-color);
+			margin-bottom: 20px;
+      text-shadow: 1px 2px 2px rgba(200, 200, 200, .8);
+		}
+
+		header a {
+			font-size: 18px;
+			text-decoration: none;
+			color: var(--couple-color);
+			margin-bottom: 10px;
+      
+		}
+
+		.wrapper {
+			margin: 10px 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 20px;
+		}
+
+		.box {
+			padding: 20px 15px;
+			border: 1px solid white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: var(--couple-color);
+      height: 80px;
+      width:100%;
+      margin-bottom:7px;
+		}
+
+		svg {
+			width: 25px;
+			height: 25px;
+			color: var(--couple-color);
+		}
+
+		section {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 20% 50% 25% 5%;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<span class="title">Search Results</span>
+      <span class="results-header">Found {{resultsNumber}} results for: {{searching_by}}</span>
+      <a href="/export?word={{searching_by}}">Export to CSV</a>
+      <a href="/">Back</a>
+    </header>
+    <div class="wrapper">
+      {% for job in jobs %}
+      <div class="box">
+        <section>
+          <span>{{job.company}}</span>
+          <span>{{job.title}}</span>
+          <span>{{job.location}}</span>
+          <a href="{{job.link}}" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+</svg>
+          </a>
+        </section>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
